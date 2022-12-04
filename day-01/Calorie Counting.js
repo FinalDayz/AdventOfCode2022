@@ -1,11 +1,18 @@
-const {readInput} = require('../Utils');
+export default function execute(data) {
 
-const data = readInput();
+    const elvesCalories = data.split('\n\n');
 
+    const addedUpElvesCalories = addUpElvesCalories(elvesCalories);
 
+    const maxCalories = getMax(addedUpElvesCalories);
+
+    console.log("Max added up calories:", maxCalories)
+
+    return maxCalories;
+}
 function addUpElvesCalories(calorieLines) {
     const totalElvesCalories = [];
-    
+
     for(const calorieLine of calorieLines) {
         let totalCalories = 0;
         for(const calorie of calorieLine.split('\n')) {
@@ -22,11 +29,3 @@ function getMax(arrOfInts) {
         (accumulator, currentValue) => Math.max(accumulator, currentValue)
     );
 }
-
-const elvesCalories = data.split('\n\n');
-
-const addedUpElvesCalories = addUpElvesCalories(elvesCalories);
-
-const maxCalories = getMax(addedUpElvesCalories);
-
-console.log("Max added up calories:", maxCalories)
